@@ -35,7 +35,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::auth();
 	
 	Route::get('/Home', function() {
-		return view('kikou');
+		return 'kikou';
 	});
 	
 	Route::get('/Profile', function() {

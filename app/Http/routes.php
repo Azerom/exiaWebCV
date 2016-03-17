@@ -19,6 +19,7 @@ Route::get('/test', function () {
     return view('test');
 });
 
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -32,6 +33,14 @@ Route::get('/test', function () {
 
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
+	
+	Route::get('/Home', function() {
+		return view('kikou');
+	});
+	
+	Route::get('/Profile', function() {
+		return;
+	});
 
     Route::get('/home', 'HomeController@index');
 });

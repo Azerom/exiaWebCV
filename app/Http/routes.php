@@ -33,11 +33,15 @@ Route::get('/test', function () {
 
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
-	
-	Route::get('/Home', function() {
+
+	Route::get('/home', function() {
 		return 'kikou';
 	});
 	
+	Route::get('/profil', function() {
+		return;
+	});
+
 	Route::get('/profils', 'ProfilController@viewAll');
 
     Route::get('/home', 'HomeController@index');

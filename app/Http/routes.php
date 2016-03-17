@@ -34,11 +34,11 @@ Route::get('/test', function () {
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
 	
-	Route::get('/Home', function() {
+	Route::get('/home', function() {
 		return 'kikou';
 	});
 	
-	Route::get('/Profile', function() {
+	Route::get('/profile', function() {
 		return;
 	});
 

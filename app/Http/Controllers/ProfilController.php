@@ -11,7 +11,10 @@ class ProfilController extends Controller
 {
     public function viewAll(){
         $profils = Profil::all();
-
         return view('profil.index', ['profils' => $profils]);
+    }
+
+    public function add(){
+
     }
 }

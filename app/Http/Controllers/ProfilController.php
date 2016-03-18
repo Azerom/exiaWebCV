@@ -14,7 +14,19 @@ class ProfilController extends Controller
         return view('profil.index', ['profils' => $profils]);
     }
 
+	public function viewOne($id){
+
+		//get the profil
+		$profil = Profil::find($id);
+		$profil -> home_msg;
+		$profil -> pseudo;
+		dd($profil);
+		//return view::make('profil.id')->with('id', $id);
+	}
+
     public function add(){
 
     }
 }
+
+

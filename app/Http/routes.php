@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Route::get('/test', function () {
     return view('test');
 });
@@ -43,6 +44,8 @@ Route::group(['middleware' => 'web'], function () {
 	});
 
 	Route::get('/profils', 'ProfilController@viewAll');
+	
+	Route::get('profil/{id}','ProfilController@viewOne');
 
     Route::get('/home', 'HomeController@index');
 });

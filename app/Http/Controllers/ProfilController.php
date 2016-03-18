@@ -12,6 +12,6 @@ class ProfilController extends Controller
     public function viewAll(){
         $profils = Profil::all();
 
-        dd($profils);
+        return view('profil.index', ['profils' => $profils]);
     }
 }

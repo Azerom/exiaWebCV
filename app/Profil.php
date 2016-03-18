@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Profil extends Model
 {
     public $timestamps = false;
+<<<<<<< HEAD
 
     public function Skill()
     {
@@ -32,6 +33,12 @@ class Profil extends Model
     {
         return $this->hasMany('App\Experience', 'id_profil');
     }
+=======
+    public function skills()
+    {
+        return $this->hasMany('App\Skill', 'id_profil');
+    }
+>>>>>>> origin/master
 }
 
 

@@ -11,7 +11,7 @@ class ProfilController extends Controller
 {
     public function viewAll(){
         $profils = Profil::all();
-
+		
         return view('profil.index', ['profils' => $profils]);
     }
 	
@@ -19,9 +19,10 @@ class ProfilController extends Controller
 		
 		//get the profil
 		$profil = Profil::find($id);
-		$profile->
-		
-		return view::make('profil.id')->with('id', $id);
+		$profil -> home_msg;
+		$profil -> pseudo;
+		dd($profil);
+		//return view::make('profil.id')->with('id', $id);
 	}
 }
 

@@ -25,6 +25,7 @@ class ProfilController extends Controller
 
     public function modify($id){
         $profil = Profil::find($id);
+		
         dd($profil);
     }
 	

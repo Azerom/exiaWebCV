@@ -10,8 +10,22 @@
 				<p>Profil n°:{{ $profil->id }}</p>
 				<p>nom: {{$profil->pseudo}}</p>
 			</div>
-		</div>				
-		<a href="javascript:history.back()" class="btn btn-primary">
+		</div>	
+	</div>
+	
+	<div class="col-md-10 col-md-offset-1">
+		<div class="panel panel-primary">	
+			<div class="panel-heading">Skills</div>
+			<div class="panel-body"> 
+				<p>@foreach($profil->skills as $skill)
+                                <p>{{ $skill->name }} : {{ $skill->level }}</p>
+                            @endforeach</p>
+			</div>
+		</div>	
+	</div>
+	
+	<div>
+	<a href="javascript:history.back()" class="btn btn-primary">
 			<span class="glyphicon glyphicon-circle-arrow-left"></span> Retour
 		</a>
 	</div>

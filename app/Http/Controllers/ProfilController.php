@@ -24,6 +24,11 @@ class ProfilController extends Controller
 		//return view::make('profil.id')->with('id', $id);
 	}
 
+    public function modify($id){
+        $profil = Profil::find($id);
+        dd($profil);
+    }
+
     public function add(){
 
     }

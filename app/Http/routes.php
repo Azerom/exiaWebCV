@@ -47,6 +47,8 @@ Route::group(['middleware' => 'web'], function () {
 	
 	Route::get('/profil/{id}','ProfilController@viewOne');
 
+	Route::get('/modify/{id}', 'ProfilController@modify');
+
     Route::get('/home', 'HomeController@index');
 });
 

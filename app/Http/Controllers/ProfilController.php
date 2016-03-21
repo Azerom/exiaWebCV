@@ -18,11 +18,9 @@ class ProfilController extends Controller
 
 		//get the profil
 		$profil = Profil::find($id);
-		$profil -> home_msg;
-		$profil -> pseudo;
 		
 		//return the id at the view
-		return view::make('profil.id')->with('id', $id);
+		return view('profil', ['profil' => $profil]);
 	}
 
     public function modify($id){

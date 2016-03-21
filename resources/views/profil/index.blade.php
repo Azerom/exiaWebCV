@@ -9,11 +9,15 @@
                     <div class="panel-heading">Liste des profils</div>
                     <div class="panel-body">
                         @foreach ($profils as $profil)
-                            <h3><a href="{{url('/profil/' . $profil->id)}}" class="btn btn-primary"> {{ $profil->pseudo }}</a></h3>
-                            <p>{{  $profil->home_msg  }}</p>
-                            @foreach($profil->skills as $skill)
-                                <p>{{ $skill->name }} : {{ $skill->level }}</p>
-                            @endforeach
+						<div class="panel panel-primary">	
+								<div class="panel-body"> 
+									<h3><a href="{{url('/profil/' . $profil->id)}}" class="btn btn-primary"> {{ $profil->pseudo }}</a></h3>
+									<p>{{  $profil->home_msg  }}</p>
+									@foreach($profil->skills as $skill)
+										<p>{{ $skill->name }} : {{ $skill->level }}</p>
+									@endforeach
+								</div>
+						</div>
                         @endforeach
                         <hr>
                     </div>

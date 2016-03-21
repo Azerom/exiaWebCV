@@ -13,7 +13,7 @@
 		</div>	
 	</div>
 	
-	<div class="col-md-10 col-md-offset-1">
+	<div class="col-md-8 col-md-offset-2">
 		<div class="panel panel-primary">	
 			<div class="panel-heading">Skills</div>
 			<div class="panel-body"> 
@@ -23,10 +23,58 @@
 			</div>
 		</div>	
 	</div>
+	<div class="col-md-8 col-md-offset-2">
+		<div class="panel panel-primary">	
+			<div class="panel-heading">Experiences</div>
+			<div class="panel-body"> 
+				<p>@foreach($profil->Experiences as $Experiences)
+							<div class="panel panel-primary">	
+								<div class="panel-body"> 
+									<p> Entreprise : {{ $Experiences->entreprise }}  <br> En : {{ $Experiences->year }} <br> Mission : {{ $Experiences->mission }}<br> Détail de la Mission : {{ $Experiences->detail_Mission }} <br>Place : {{ $Experiences->place }}</p>
+								</div>
+							</div>
+					@endforeach</p>
+			</div>
+		</div>	
+	</div>
 	
-	<div>
-	<a href="javascript:history.back()" class="btn btn-primary">
-			<span class="glyphicon glyphicon-circle-arrow-left"></span> Retour
-		</a>
+	<div class="col-md-8 col-md-offset-2">
+		<div class="panel panel-primary">	
+			<div class="panel-heading">Formation</div>
+			<div class="panel-body"> 
+				<p>@foreach($profil->Formation as $Formation)
+							<div class="panel panel-primary">	
+								<div class="panel-body"> 
+									<p>{{ $Formation->title }} <br> En : {{ $Formation->year }} <br> {{ $Formation->diploma }} <br> {{ $Formation->place }} <br> {{ $Formation->description }}</p>
+								</div>
+							</div>
+					@endforeach</p>
+			</div>
+		</div>	
+	</div>
+	
+	<div class="col-md-8 col-md-offset-2">
+		<div class="panel panel-primary">	
+			<div class="panel-heading">Projet</div>
+			<div class="panel-body"> 
+				
+				<p>@foreach($profil->Projet as $Projet)
+							<div class="panel panel-primary">	
+								<div class="panel-body"> 
+									<p>{{ $Projet->name }} <br> {{ $Projet->description }} <br>  <br> {{ $Projet->links }} <br> {{ $Projet->source }}</p>
+									<IMG SRC="{{ $Projet->illustration }}" ALT="illus">
+								</div>
+							</div>
+				@endforeach</p>
+				
+			</div>
+		</div>	
+	</div>
+	<div class="col-md-8 col-md-offset-2">
+		<div>
+			<a href="javascript:history.back()" class="btn btn-primary">
+				<span class="glyphicon glyphicon-circle-arrow-left"></span> Retour
+			</a>
+		</div>
 	</div>
 @endsection

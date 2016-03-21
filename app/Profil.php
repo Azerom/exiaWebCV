@@ -8,9 +8,9 @@ class Profil extends Model
 {
     public $timestamps = false;
 
-    public function Skill()
+    public function Experiences()
     {
-        return $this->hasMany('App\Skill', 'id_profil');
+        return $this->hasMany('App\Experiences', 'id_profil');
     }
 
     public function Projet()

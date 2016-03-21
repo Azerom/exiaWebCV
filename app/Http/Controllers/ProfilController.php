@@ -19,10 +19,9 @@ class ProfilController extends Controller
 
 		//get the profil
 		$profil = Profil::find($id);
-		$profil -> home_msg;
-		$profil -> pseudo;
-
-		return view::make('profil.id')->with('id', $id);
+		
+		//return the id at the view
+		return view('profil', ['profil' => $profil]);
 	}
 
     public function modify($id){
@@ -75,8 +74,22 @@ class ProfilController extends Controller
         }
         $profil = Profil::find($id);
 
+
         return view('profil.modify', ['profil' => $profil, 'id' => $id]);
+
     }
+	
+	public function delete($id){
+		
+		//get the profil
+        $profil = Profil::find($id);
+		
+		echo "Profil delete";
+		$profil->delete();
+		
+    }
+	
+	
 
     public function add(){
 

@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 
-class Profil extends Authenticatable
+class Profil extends Model
 {
     public $timestamps = false;
 

@@ -36,12 +36,13 @@ class ProfilController extends Controller
             $i = 0;
             $count = $_POST['skillsNb'];
             $nSkills = [];
+            $lSkills = [];
             while($count != 0){
 
                 if(isset($_POST['skill' . $i])){
 
                     array_push($nSkills, $_POST['skill' . $i]);
-
+                    array_push($lSkills, $_POST['lskill' . $i]);
                     $count--;
                 }
 
@@ -51,7 +52,11 @@ class ProfilController extends Controller
             $i = 0;
             foreach($profil->skills as $skill){
                 if(in_array($skill->name, $nSkills)){
+                    if($skill->level != $lSkills[$i]){
+                        $skill->level = $lSkills[$i];
+                    }
                     unset($nSkills[$i]);
+                    unset($lSkills[$i]);
                 }
                 else{
                     //$profil->skills->splice($profil->skills->search($skill), 1);
@@ -65,8 +70,10 @@ class ProfilController extends Controller
                 $skill = new Skill();
                 $skill->name = $nSkill;
                 $skill->id_profil = $id;
-
+                $skill->level = $lSkills[array_search($nSkill, $nSkills)];
                 $profil->skills->add($skill);
+                unset($nSkills[$i]);
+                unset($lSkills[$i]);
             }
 
             $profil->push();

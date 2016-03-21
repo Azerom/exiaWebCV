@@ -10,7 +10,7 @@ class Profil extends Model
 
     public function Experiences()
     {
-        return $this->hasMany('App\Experiences', 'id_profil');
+        return $this->hasMany('App\Experience', 'id_profil');
     }
 
     public function Projet()

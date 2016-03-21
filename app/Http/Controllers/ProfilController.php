@@ -29,6 +29,18 @@ class ProfilController extends Controller
         $profil = Profil::find($id);
         dd($profil);
     }
+	
+	public function delete($id){
+		
+		//get the profil
+        $profil = Profil::find($id);
+		
+		echo "Profil delete";
+		$profil->delete();
+		
+    }
+	
+	
 
     public function add(){
 

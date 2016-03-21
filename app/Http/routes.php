@@ -36,7 +36,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
 	Route::get('/home', function() {
-		return 'kikou';
+		return;
 	});
 	
 	Route::get('/profil', function() {
@@ -49,6 +49,8 @@ Route::group(['middleware' => 'web'], function () {
 
 	Route::get('/modify/{id}', 'ProfilController@modify');
 
+	Route::get('/delete/{id}', 'ProfilController@delete');
+	
     Route::get('/home', 'HomeController@index');
 });
 

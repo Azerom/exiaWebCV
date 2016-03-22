@@ -49,25 +49,29 @@ Route::group(['middleware' => 'web'], function () {
 	
 	Route::get('/profil/{id}','ProfilController@viewOne');
 
-	Route::get('/modify', 'ProfilController@modify')->name("getModify");
-	Route::post('/modify', 'ProfilController@modify');
 
-	Route::get('/modify/skills', 'ProfilController@modifySkills')->name("getModifySkills");
-	Route::post('/modify/skills', 'ProfilController@modifySkills');
 
-	Route::get('/modify/form', 'ProfilController@modifyFormations')->name("getModifyFormations");
-	Route::post('/modify/form', 'ProfilController@modifyFormations');
-
-	Route::get('/modify/project', 'ProfilController@modifyProject')->name("getModifyProject");
-	Route::post('/modify/project', 'ProfilController@modifyProject');
-
-	Route::get('/modify/{id}/project', 'ProfilController@modifyExperience')->name("getModifyExperience");
-	Route::post('/modify/{id}/project', 'ProfilController@modifyExperience');
+	Route::get('/modify/experience', 'ProfilController@modifyExperience')->name("getModifyExperience");
+	Route::post('/modify/experience', 'ProfilController@modifyExperience');
 
 	Route::get('/delete/{id}', 'ProfilController@delete');
 	
     Route::get('/home', 'HomeController@index');
 
 	Route::get('/profil', 'ProfilController@viewSelf');
+
+	Route::group(['middleware' => 'auth'], function () {
+		Route::get('/modify', 'ProfilController@modify')->name("getModify");
+		Route::post('/modify', 'ProfilController@modify');
+
+		Route::get('/modify/skills', 'ProfilController@modifySkills')->name("getModifySkills");
+		Route::post('/modify/skills', 'ProfilController@modifySkills');
+
+		Route::get('/modify/form', 'ProfilController@modifyFormations')->name("getModifyFormations");
+		Route::post('/modify/form', 'ProfilController@modifyFormations');
+
+		Route::get('/modify/project', 'ProfilController@modifyProject')->name("getModifyProject");
+		Route::post('/modify/project', 'ProfilController@modifyProject');
+	});
 });
 

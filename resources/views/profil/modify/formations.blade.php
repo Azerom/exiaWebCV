@@ -67,7 +67,7 @@
                     <div class="panel-heading"> <a href="{{ url('/modify') }}">Modifier mon profil</a>
 						<a href="{{ url('/modify/skills') }}"class="btn btn-default">Skills</a>
 						<a href="{{ url('/modify/form') }}"class="btn btn-default">Formations</a>
-						<a href="{{ url('/modify/') }}"class="btn btn-default">Experience</a>
+						<a href="{{ url('/modify/experience') }}"class="btn btn-default">Experience</a>
 						<a href="{{ url('/modify/project') }}"class="btn btn-default">Projects</a>
 					</div>
                     <div class="panel-body">

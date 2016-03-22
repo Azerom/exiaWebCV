@@ -28,13 +28,14 @@
 			<div class="panel-heading">Experiences</div>
 			<div class="panel-body"> 
 				<p>@foreach($profil->Experiences as $Experiences)
-						<div class="col-xs-6 col-sm-4">
+						<div class="col-sm-4 col-md-6">
 							<div class="panel panel-default">	
 								<div class="panel-body"> 
 									<p> Entreprise : {{ $Experiences->entreprise }}  <br> En : {{ $Experiences->year }} <br> Mission : {{ $Experiences->mission }}<br> Détail de la Mission : {{ $Experiences->detail_Mission }} <br>Place : {{ $Experiences->place }}</p>
 								</div>
 							</div>
 						</div>
+						<div class="clearfix visible-xs"><br></div>
 					@endforeach</p>
 			</div>
 		</div>	
@@ -45,13 +46,14 @@
 			<div class="panel-heading">Formation</div>
 			<div class="panel-body"> 
 				<p>@foreach($profil->Formation as $Formation)
-						<div class="col-xs-6 col-sm-4">
+						<div class="col-sm-4 col-md-6">
 							<div class="panel panel-default">	
 								<div class="panel-body"> 
 									<p>{{ $Formation->title }} <br> En : {{ $Formation->year }} <br> {{ $Formation->diploma }} <br> {{ $Formation->place }} <br> {{ $Formation->description }}</p>
 								</div>
 							</div>
 						</div>
+						<div class="clearfix visible-xs"><br></div>
 					@endforeach</p>
 			</div>
 		</div>	
@@ -63,7 +65,7 @@
 			<div class="panel-body"> 
 				
 				<p>@foreach($profil->Projet as $Projet)
-						<div class="col-xs-6 col-sm-4">
+						<div class="col-sm-4 col-md-6">
 							<div class="panel panel-default">	
 								<div class="panel-body"> 
 									<p>{{ $Projet->name }} <br> {{ $Projet->description }} <br>  <br> <a href="{{ $Projet->links }}">Lien</a> <br> <a href="{{ $Projet->source }}">Source</a></p>
@@ -71,6 +73,7 @@
 								</div>
 							</div>
 						</div>
+						<div class="clearfix visible-xs"><br></div>
 				@endforeach</p>
 				
 			</div>

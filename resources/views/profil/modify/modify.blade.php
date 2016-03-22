@@ -105,7 +105,7 @@
 							<br>
                             <?php $fcount = $profil->Field->count(); ?>
                             
-                            <input type="hidden" value="{{$fcount}}" id="fieldsNb" name="fieldsNb1" >
+                            <input type="text" value="{{$fcount}}" id="fieldsNb" name="fieldsNb1" >
                             <p>@foreach($profil->Field as $field)
 								<div class="panel panel-default">	
 									<div class="panel-body"> 

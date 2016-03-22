@@ -61,6 +61,9 @@ Route::group(['middleware' => 'web'], function () {
 	Route::get('/modify/project', 'ProfilController@modifyProject')->name("getModifyProject");
 	Route::post('/modify/project', 'ProfilController@modifyProject');
 
+	Route::get('/modify/{id}/project', 'ProfilController@modifyExperience')->name("getModifyExperience");
+	Route::post('/modify/{id}/project', 'ProfilController@modifyExperience');
+
 	Route::get('/delete/{id}', 'ProfilController@delete');
 	
     Route::get('/home', 'HomeController@index');

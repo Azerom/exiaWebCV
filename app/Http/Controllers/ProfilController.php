@@ -319,6 +319,72 @@ class ProfilController extends Controller
             return view('profil.modify.project', ['profil' => $profil, 'id' => $id]);
         }
     }
+
+    public function modifyExperience($id)
+    {
+        $profil = Profil::find($id);
+        if (isset($_POST['experienceNb3'])) {
+
+
+
+            $i = 0;
+            $count = $_POST['experienceNb3'];
+            $nExperience = [[], [], [], [], []];
+
+            while ($count != 0) {
+
+                if (isset($_POST['year' . $i])) {
+
+                    array_push($nExperience[0], $_POST['year' . $i]);
+                    array_push($nExperience[1], $_POST['mission' . $i]);
+                    array_push($nExperience[2], $_POST['entreprise' . $i]);
+                    array_push($nExperience[3], $_POST['detail_Mission' . $i]);
+                    array_push($nExperience[4], $_POST['place' . $i]);
+                    $count--;
+                }
+
+                $i++;
+            }
+
+            $i = 0;
+            foreach ($profil->Experience as $experience) {
+                if (in_array($experience->year, $nExperience[0])) {
+                    for ($j = 0; $j <= 4; $j++) {
+                        unset($nExperience[$j][$i]);
+                    }
+                } else {
+
+                    $experience->id_profil = null;
+                }
+
+                $i++;
+            }
+
+            foreach ($nExperience[0] as $nExperiences) {
+                $i = array_search($nExperiences, $nExperience[0]);
+                $form = new Experience();
+                $form->year = $nExperiences;
+                $form->id_profil = $id;
+                $form->mission = $nExperience[1][$i];
+                $form->entreprise = $nExperience[2][$i];
+                $form->detail_Mission = $nExperience[3][$i];
+                $form->place = $nExperience[4][$i];
+
+                $profil->Experience->add($form);
+                for ($j = 0; $j <= 4; $j++) {
+                    unset($nExperience[$j][$i]);
+                }
+            }
+
+            $profil->push();
+            return redirect()->route('getModifyExperience', ['id' => $id]);
+
+        }
+        else {
+
+            return view('profil.modify.experience', ['profil' => $profil, 'id' => $id]);
+        }
+    }
 }
 
 

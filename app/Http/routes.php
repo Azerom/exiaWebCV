@@ -67,5 +67,7 @@ Route::group(['middleware' => 'web'], function () {
 	Route::get('/delete/{id}', 'ProfilController@delete');
 	
     Route::get('/home', 'HomeController@index');
+
+	Route::get('/profil', 'ProfilController@viewSelf');
 });
 

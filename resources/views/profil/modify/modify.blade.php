@@ -64,12 +64,12 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
 
-                    <div class="panel-heading">
-                        Modifier mon profil
-                        <a href="{{ url('/modify/skills') }}"class="btn btn-default">Skills</a>
-                        <a href="{{ url('/modify/form') }}"class="btn btn-default">Formations</a>
-
-                    </div>
+                    <div class="panel-heading"> <a href="{{ url('/modify') }}">Modifier mon profil</a>
+						<a href="{{ url('/modify/skills') }}"class="btn btn-default">Skills</a>
+						<a href="{{ url('/modify/form') }}"class="btn btn-default">Formations</a>
+						<a href="{{ url('/modify/') }}"class="btn btn-default">Experience</a>
+						<a href="{{ url('/modify/project') }}"class="btn btn-default">Projects</a>
+					</div>
                     <div class="panel-body">
                         {!! Form::model($profil, array('url' => '/modify')) !!}
 
@@ -105,24 +105,35 @@
 							<br>
                             <?php $fcount = $profil->Field->count(); ?>
                             
-                            <input type="text" value="{{$fcount}}" id="fieldsNb" name="fieldsNb1" >
+                            <!--<input type="text" value="{{$fcount}}" id="fieldsNb" name="fieldsNb1" >-->
 
-                            <p>@foreach($profil->Field as $field)
+                            @foreach($profil->Field as $field)
                                 <div id="field{{$field->id-1}}">
 								    <div class="panel panel-default">
 									    <div class="panel-body">
-
+										<div class="col-sm-3 col-md-6">
 											Field {{$field->id}}
+										</div>
+										<div class="clearfix visible-xs"><br></div>
+											
+										<div class="col-sm-3 col-md-6">
 											<input type="text" name="field{{$field->id-1}}" value="{{$field->name}}">
-											<div class="clearfix visible-xs"><br></div>
+										</div>
+										<div class="clearfix visible-xs"><br></div>
+											
+										<div class="col-sm-3 col-md-6">
 											<input type="text" name="vfield{{$field->id-1}}" value="{{$field->value}}">
+										</div>
+										<div class="clearfix visible-xs"><br></div>
+										
+										<div class="col-sm-3 col-md-6">
 											<input name="afield{{$field->id-1}}" <?php if($field->access){ echo 'checked ="checked"';}?> type="checkbox">
-											<div class="clearfix visible-xs"><br></div>
+											<br>
 											<a href="#" onclick="deleteField({{$field->id-1}}, 'field')"class="btn btn-default">Delete</a>
 										</div>
 									</div>
 								</div>
-                            </p>@endforeach
+                            @endforeach
 
                         </div>
 
@@ -133,9 +144,6 @@
                                 </button>
                             </div>
                         {!! Form::close() !!}
-
-                        <a href="{{ url('/modify/skills') }}">Skills</a>
-                        <a href="{{ url('/modify/form') }}">Formations</a>
                     </div>
                 </div>
             </div>

@@ -31,8 +31,17 @@ class ProfilController extends Controller
         return view('profil', ['profil' => $profil]);
     }
 
+    public function viewSelf(){
+        $user = Auth::user();
+        $id = $user->id_profil;
+        return $this->viewOne($id);
+    }
+
     public function modify()
     {
+        if(! Auth::check()){
+            return view('errors.401');
+        }
         $user = Auth::user();
         $id = $user->id_profil;
         $profil = Profil::find($id);
@@ -112,6 +121,9 @@ class ProfilController extends Controller
 
     public function modifySkills()
     {
+        if(! Auth::check()){
+            return view('errors.401');
+        }
         $user = Auth::user();
         $id = $user->id_profil;
         $profil = Profil::find($id);
@@ -170,6 +182,9 @@ class ProfilController extends Controller
 
     public function modifyFormations()
     {
+        if(! Auth::check()){
+            return view('errors.401');
+        }
         $user = Auth::user();
         $id = $user->id_profil;
         $profil = Profil::find($id);
@@ -236,6 +251,9 @@ class ProfilController extends Controller
 
     public function delete($id)
     {
+        if(! Auth::check()){
+            return view('errors.401');
+        }
 
         //get the profil
         $profil = Profil::find($id);

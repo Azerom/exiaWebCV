@@ -63,9 +63,9 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Liste des profils <a href="{{ url('/modify/' . $id) }}">Retourner au profil</a></div>
+                    <div class="panel-heading">Liste des profils <a href="{{ url('/modify') }}">Retourner au profil</a></div>
                     <div class="panel-body">
-                        {!! Form::model($profil, array('url' => '/modify/' . $id . '/experience')) !!}
+                        {!! Form::model($profil, array('url' => '/modify/experience')) !!}
 
                         {!! csrf_field() !!}
 
@@ -73,11 +73,11 @@
                         ['year', 'mission', 'entreprise', 'detail_Mission', 'place'],
                         ['date', 'text', 'text', 'text', 'text'])">Ajouter un champ</a>
 
-                        <div id="projects-container">
-                            <?php $fcount = $experience->Experience->count(); ?>
+                        <div id="experiences-container">
+                            <?php $fcount = $profil->Experiences->count(); ?>
                             Nb : {{$fcount}}
                             <input type="text" value="{{$fcount}}" id="experienceNb" name="experienceNb3" >
-                            @foreach($profil->Experience as $field)
+                            @foreach($profil->Experiences as $field)
 
 
                                 <div id="experience{{$field->id-1}}">

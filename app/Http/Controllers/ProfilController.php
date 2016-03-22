@@ -8,6 +8,7 @@ use App\Field;
 use App\Formation;
 use App\Projet;
 use App\User;
+use App\Experience;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -319,8 +320,10 @@ class ProfilController extends Controller
         }
     }
 
-    public function modifyExperience($id)
+    public function modifyExperience()
     {
+        $user = Auth::user();
+        $id = $user->id_profil;
         $profil = Profil::find($id);
         if (isset($_POST['experienceNb3'])) {
 
@@ -346,7 +349,7 @@ class ProfilController extends Controller
             }
 
             $i = 0;
-            foreach ($profil->Experience as $experience) {
+            foreach ($profil->Experiences as $experience) {
                 if (in_array($experience->year, $nExperience[0])) {
                     for ($j = 0; $j <= 4; $j++) {
                         unset($nExperience[$j][$i]);
@@ -369,7 +372,7 @@ class ProfilController extends Controller
                 $form->detail_Mission = $nExperience[3][$i];
                 $form->place = $nExperience[4][$i];
 
-                $profil->Experience->add($form);
+                $profil->Experiences->add($form);
                 for ($j = 0; $j <= 4; $j++) {
                     unset($nExperience[$j][$i]);
                 }
@@ -383,7 +386,12 @@ class ProfilController extends Controller
 
             return view('profil.modify.experience', ['profil' => $profil, 'id' => $id]);
         }
+
+
+
     }
+
+
 }
 
 

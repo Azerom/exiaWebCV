@@ -65,11 +65,11 @@
                 <div class="panel panel-default">
 
                     <div class="panel-heading">
-						Modifier mon profil
-						<a href="{{ url('/modify/skills') }}"class="btn btn-default">Skills</a>
-						<a href="{{ url('/modify/form') }}"class="btn btn-default">Formations</a>
+                        Modifier mon profil
+                        <a href="{{ url('/modify/skills') }}"class="btn btn-default">Skills</a>
+                        <a href="{{ url('/modify/form') }}"class="btn btn-default">Formations</a>
 
-					</div>
+                    </div>
                     <div class="panel-body">
                         {!! Form::model($profil, array('url' => '/modify')) !!}
 

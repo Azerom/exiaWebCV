@@ -39,7 +39,6 @@ class ProfilController extends Controller
 
         if (isset($_POST['pseudo'])) {
 
-
             $profil->pseudo = $_POST['pseudo'];
             $profil->home_msg = $_POST['home_msg'];
 

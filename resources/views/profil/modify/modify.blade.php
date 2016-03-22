@@ -66,6 +66,7 @@
 
                     <div class="panel-heading">
 						Modifier mon profil
+						
 						<a href="{{ url('/modify/' . $id . '/skills') }}"class="btn btn-default">Skills</a>
 						<a href="{{ url('/modify/' . $id . '/form') }}"class="btn btn-default">Formations</a>
 					</div>

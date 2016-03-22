@@ -65,25 +65,52 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Liste des profils <a href="{{ url('/modify/' . $id) }}">Retourner au profil</a></div>
                     <div class="panel-body">
-                        {!! Form::model($profil, array('url' => '/modify/' . $id . '/skills')) !!}
+                        {!! Form::model($profil, array('url' => '/modify/' . $id . '/form')) !!}
 
                         {!! csrf_field() !!}
 
-                        <a href="#" onclick="addFields('skill', 'Compétences',
-                        ['skill', 'lskill'],
-                        ['text', 'text'])">Ajouter un skill</a>
+                        <div class="form-group{{ $errors->has('pseudo') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Pseudo</label>
 
-                        <div id="skills-container">
-                            <?php $count = $profil->skills->count(); ?>
-                            <input type="text" value="{{$count}}" id="skillsNb" name="skillsNb" >
-                            @foreach($profil->skills as $skill)
+                            <div class="col-md-6">
+                                {{Form::text('pseudo', null, array('class' => 'form-control'))}}
+
+                                @if ($errors->has('pseudo'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('pseudo') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Message d'acceuil</label>
+
+                            <div class="col-md-6">
+                                {{Form::text('home_msg', null, array('class' => 'form-control'))}}
+
+                            </div>
+                        </div>
+
+                        <a href="#" onclick="addFields('form', 'Formation ',
+                        ['fyear', 'ftitle', 'fdiploma', 'fplace', 'fdesc'],
+                        ['text', 'text', 'text', 'text', 'text'])">Ajouter un champ</a>
+
+                        <div id="forms-container">
+                            <?php $fcount = $profil->Formation->count(); ?>
+                            Nb : {{$fcount}}
+                            <input type="text" value="{{$fcount}}" id="formsNb" name="formsNb3" >
+                            @foreach($profil->Formation as $field)
 
 
-                                <div id="skill{{$skill->id-1}}">
-                                    Compétences {{$skill->id}}
-                                    <a href="#" onclick="deleteField({{$skill->id-1}}, 'skill')">Delete</a>
-                                    <input type="text" name="skill{{$skill->id-1}}" value="{{$skill->name}}">
-                                    <input  name="lskill{{$skill->id-1}}"list="level" value="{{$skill->level}}">
+                                <div id="form{{$field->id-1}}">
+                                    Formation {{$field->id}}
+                                    <a href="#" onclick="deleteField({{$field->id-1}}, 'form')">Delete</a>
+                                    <input type="text" name="fyear{{$field->id-1}}" value="{{$field->year}}">
+                                    <input type="text" name="ftitle{{$field->id-1}}" value="{{$field->title}}">
+                                    <input type="text" name="fdiploma{{$field->id-1}}" value="{{$field->diploma}}">
+                                    <input type="text" name="fplace{{$field->id-1}}" value="{{$field->place}}">
+                                    <input type="text" name="fdesc{{$field->id-1}}" value="{{$field->description}}">
                                 </div>
 
                             @endforeach
@@ -99,6 +126,8 @@
                             </div>
                         </div>
                         {!! Form::close() !!}
+
+                        <a href="{{ url('/modify/' . $id . '/skills') }}">Skills</a>
                     </div>
                 </div>
             </div>

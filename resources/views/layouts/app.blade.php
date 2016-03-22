@@ -66,6 +66,7 @@
 
                     <li><a href="{{ url('/home') }}">Home</a></li>
                     <li><a href="{{ url('/profils') }}">Profils</a></li>
+                    <li><a href="{{ url('/modify') }}">Dashboard</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->

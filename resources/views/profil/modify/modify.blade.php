@@ -111,13 +111,24 @@
                                 <div id="field{{$field->id-1}}">
 								    <div class="panel panel-default">
 									    <div class="panel-body">
+										<div class="col-sm-3 col-md-6">
 											Field {{$field->id}}
-											<div class="clearfix visible-xs"><br></div>
+										</div>
+										<div class="clearfix visible-xs"><br></div>
+											
+										<div class="col-sm-3 col-md-6">
 											<input type="text" name="field{{$field->id-1}}" value="{{$field->name}}">
-											<div class="clearfix visible-xs"><br></div>
+										</div>
+										<div class="clearfix visible-xs"><br></div>
+											
+										<div class="col-sm-3 col-md-6">
 											<input type="text" name="vfield{{$field->id-1}}" value="{{$field->value}}">
+										</div>
+										<div class="clearfix visible-xs"><br></div>
+										
+										<div class="col-sm-3 col-md-6">
 											<input name="afield{{$field->id-1}}" <?php if($field->access){ echo 'checked ="checked"';}?> type="checkbox">
-											<div class="clearfix visible-xs"><br></div>
+											<br>
 											<a href="#" onclick="deleteField({{$field->id-1}}, 'field')"class="btn btn-default">Delete</a>
 										</div>
 									</div>
@@ -133,9 +144,6 @@
                                 </button>
                             </div>
                         {!! Form::close() !!}
-
-                        <a href="{{ url('/modify/skills') }}">Skills</a>
-                        <a href="{{ url('/modify/form') }}">Formations</a>
                     </div>
                 </div>
             </div>

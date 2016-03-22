@@ -25,6 +25,7 @@
 
             // Append a node with a random text
             div.appendChild(document.createTextNode(text + (number+1)));
+			
 
             var delLink = document.createElement("a");
             delLink.setAttribute("onclick", "deleteField(" + number + ", '" + keyword + "')");

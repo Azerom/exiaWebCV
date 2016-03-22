@@ -85,13 +85,21 @@
                                 <div id="skill{{$skill->id-1}}">
 									<div class="panel panel-default">
 									    <div class="panel-body">
-											Compétences {{$skill->id}}
+											<div class="col-sm-4 col-md-6">
+												Compétences {{$skill->id}}
+											</div>
 											<div class="clearfix visible-xs"><br></div>
-											<input type="text" name="skill{{$skill->id-1}}" value="{{$skill->name}}">
+											<div class="col-sm-4 col-md-6">
+												<input type="text" name="skill{{$skill->id-1}}" value="{{$skill->name}}">
+											</div>
 											<div class="clearfix visible-xs"><br></div>
-											<input  name="lskill{{$skill->id-1}}"list="level" value="{{$skill->level}}">
+											<div class="col-sm-4 col-md-6">
+												<input  name="lskill{{$skill->id-1}}"list="level" value="{{$skill->level}}">
+											</div>
 											<div class="clearfix visible-xs"><br></div>
-											<a href="#" onclick="deleteField({{$skill->id-1}}, 'skill')"class="btn btn-default">Delete</a>
+											<div class="col-sm-4 col-md-6">
+												<a href="#" onclick="deleteField({{$skill->id-1}}, 'skill')"class="btn btn-default">Delete</a>
+											</div>
 										</div>
 									</div>
 								</div>

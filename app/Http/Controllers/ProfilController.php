@@ -272,6 +272,10 @@ class ProfilController extends Controller
 
     public function modifyProject()
     {
+        if(! Auth::check()){
+            return view('errors.401');
+        }
+
         $user = Auth::user();
         $id = $user->id_profil;
         $profil = Profil::find($id);
@@ -340,6 +344,10 @@ class ProfilController extends Controller
 
     public function modifyExperience()
     {
+        if(! Auth::check()){
+            return view('errors.401');
+        }
+        
         $user = Auth::user();
         $id = $user->id_profil;
         $profil = Profil::find($id);

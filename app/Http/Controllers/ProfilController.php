@@ -31,6 +31,12 @@ class ProfilController extends Controller
         return view('profil', ['profil' => $profil]);
     }
 
+    public function viewSelf(){
+        $user = Auth::user();
+        $id = $user->id_profil;
+        return $this->viewOne($id);
+    }
+
     public function modify()
     {
         $user = Auth::user();

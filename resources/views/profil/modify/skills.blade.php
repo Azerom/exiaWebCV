@@ -63,7 +63,12 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Liste des profils <a href="{{ url('/modify') }}">Retourner au profil</a></div>
+                    <div class="panel-heading"> <a href="{{ url('/modify') }}">Modifier mon profil</a>
+						<a href="{{ url('/modify/skills') }}"class="btn btn-default">Skills</a>
+						<a href="{{ url('/modify/form') }}"class="btn btn-default">Formations</a>
+						<a href="{{ url('/modify/') }}"class="btn btn-default">Experience</a>
+						<a href="{{ url('/modify/project') }}"class="btn btn-default">Projects</a>
+					</div>
                     <div class="panel-body">
                         {!! Form::model($profil, array('url' => '/modify/skills')) !!}
 
@@ -71,20 +76,25 @@
 
                         <a href="#" onclick="addFields('skill', 'Compétences',
                         ['skill', 'lskill'],
-                        ['text', 'text'])">Ajouter un skill</a>
+                        ['text', 'text'])"class="btn btn-default">Ajouter un skill</a><br><br>
 
                         <div id="skills-container">
                             <?php $count = $profil->skills->count(); ?>
-                            <input type="text" value="{{$count}}" id="skillsNb" name="skillsNb" >
+                            <!--<input type="text" value="{{$count}}" id="skillsNb" name="skillsNb" >-->
                             @foreach($profil->skills as $skill)
-
-
                                 <div id="skill{{$skill->id-1}}">
-                                    Compétences {{$skill->id}}
-                                    <a href="#" onclick="deleteField({{$skill->id-1}}, 'skill')">Delete</a>
-                                    <input type="text" name="skill{{$skill->id-1}}" value="{{$skill->name}}">
-                                    <input  name="lskill{{$skill->id-1}}"list="level" value="{{$skill->level}}">
-                                </div>
+									<div class="panel panel-default">
+									    <div class="panel-body">
+											Compétences {{$skill->id}}
+											<div class="clearfix visible-xs"><br></div>
+											<input type="text" name="skill{{$skill->id-1}}" value="{{$skill->name}}">
+											<div class="clearfix visible-xs"><br></div>
+											<input  name="lskill{{$skill->id-1}}"list="level" value="{{$skill->level}}">
+											<div class="clearfix visible-xs"><br></div>
+											<a href="#" onclick="deleteField({{$skill->id-1}}, 'skill')"class="btn btn-default">Delete</a>
+										</div>
+									</div>
+								</div>
 
                             @endforeach
 
@@ -93,7 +103,7 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-default">
                                     <i class="fa fa-btn fa-sign-in"></i>Valider
                                 </button>
                             </div>

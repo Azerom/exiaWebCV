@@ -66,11 +66,11 @@
 
                     <div class="panel-heading">
 						Modifier mon profil
-						<a href="{{ url('/modify/' . $id . '/skills') }}"class="btn btn-default">Skills</a>
-						<a href="{{ url('/modify/' . $id . '/form') }}"class="btn btn-default">Formations</a>
+						<a href="{{ url('/modify/skills') }}"class="btn btn-default">Skills</a>
+						<a href="{{ url('/modify/form') }}"class="btn btn-default">Formations</a>
 					</div>
                     <div class="panel-body">
-                        {!! Form::model($profil, array('url' => '/modify/' . $id)) !!}
+                        {!! Form::model($profil, array('url' => '/modify')) !!}
 
                             {!! csrf_field() !!}
 
@@ -131,8 +131,8 @@
                             </div>
                         {!! Form::close() !!}
 
-                        <a href="{{ url('/modify/' . $id . '/skills') }}">Skills</a>
-                        <a href="{{ url('/modify/' . $id . '/form') }}">Formations</a>
+                        <a href="{{ url('/modify/skills') }}">Skills</a>
+                        <a href="{{ url('/modify/form') }}">Formations</a>
                     </div>
                 </div>
             </div>

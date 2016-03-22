@@ -63,9 +63,9 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Liste des profils <a href="{{ url('/modify/' . $id) }}">Retourner au profil</a></div>
+                    <div class="panel-heading">Liste des profils <a href="{{ url('/modify') }}">Retourner au profil</a></div>
                     <div class="panel-body">
-                        {!! Form::model($profil, array('url' => '/modify/' . $id . '/form')) !!}
+                        {!! Form::model($profil, array('url' => '/modify/form')) !!}
 
                         {!! csrf_field() !!}
 
@@ -127,7 +127,6 @@
                         </div>
                         {!! Form::close() !!}
 
-                        <a href="{{ url('/modify/' . $id . '/skills') }}">Skills</a>
                     </div>
                 </div>
             </div>

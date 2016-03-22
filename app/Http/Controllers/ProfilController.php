@@ -7,6 +7,8 @@ use App\Skill;
 use App\Field;
 use App\Formation;
 use App\Projet;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -29,12 +31,15 @@ class ProfilController extends Controller
         return view('profil', ['profil' => $profil]);
     }
 
-    public function modify($id)
+    public function modify()
     {
+        $user = Auth::user();
+        $id = $user->id_profil;
+        $profil = Profil::find($id);
 
         if (isset($_POST['pseudo'])) {
 
-            $profil = Profil::find($id);
+
             $profil->pseudo = $_POST['pseudo'];
             $profil->home_msg = $_POST['home_msg'];
 
@@ -98,18 +103,20 @@ class ProfilController extends Controller
             }
 
             $profil->push();
-            return redirect()->route('getModify', ['id' => $id]);
+            return redirect()->route('getModify');
         }
-        $profil = Profil::find($id);
 
 
         return view('profil.modify.modify', ['profil' => $profil, 'id' => $id]);
 
     }
 
-    public function modifySkills($id)
+    public function modifySkills()
     {
+        $user = Auth::user();
+        $id = $user->id_profil;
         $profil = Profil::find($id);
+
         if (isset($_POST['skillsNb'])) {
 
             $i = 0;
@@ -155,15 +162,17 @@ class ProfilController extends Controller
             }
 
             $profil->push();
-            return redirect()->route('getModifySkills', ['id' => $id]);
+            return redirect()->route('getModifySkills');
         } else {
 
             return view('profil.modify.skills', ['profil' => $profil, 'id' => $id]);
         }
     }
 
-    public function modifyFormations($id)
+    public function modifyFormations()
     {
+        $user = Auth::user();
+        $id = $user->id_profil;
         $profil = Profil::find($id);
         if (isset($_POST['formsNb3'])) {
 
@@ -219,7 +228,7 @@ class ProfilController extends Controller
             }
 
             $profil->push();
-            return redirect()->route('getModifyFormations', ['id' => $id]);
+            return redirect()->route('getModifyFormations');
         } else {
 
             return view('profil.modify.formations', ['profil' => $profil, 'id' => $id]);
@@ -243,8 +252,10 @@ class ProfilController extends Controller
 
     }
 
-    public function modifyProject($id)
+    public function modifyProject()
     {
+        $user = Auth::user();
+        $id = $user->id_profil;
         $profil = Profil::find($id);
         if (isset($_POST['projectsNb3'])) {
 
@@ -300,7 +311,7 @@ class ProfilController extends Controller
             }
 
             $profil->push();
-            return redirect()->route('getModifyProject', ['id' => $id]);
+            return redirect()->route('getModifyProject');
 
         }
         else {

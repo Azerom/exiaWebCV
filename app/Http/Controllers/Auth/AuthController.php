@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers\Auth;
 use App\User;
+use App\Profil;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -55,10 +56,15 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
+        $profil = new Profil();
+        $profil->pseudo = $data['name'];
+        $profil->push();
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'id_profil' => $profil->id,
         ]);
     }
 }

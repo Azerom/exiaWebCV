@@ -99,7 +99,7 @@
 
                         <a href="#" onclick="addFields('experience', 'Experience ',
                         ['year', 'mission', 'entreprise', 'detail_Mission', 'place'],
-                        ['date', 'text', 'text', 'text', 'text'])"class="btn btn-default">Ajouter un champ</a>
+                        ['date', 'text', 'text', 'text', 'text'])"class="btn btn-default">Ajouter un champ</a><br><br>
 
                         <div id="experiences-container">
                             <?php $fcount = $profil->Experiences->count(); ?>
@@ -136,9 +136,10 @@
 											</div>
 											<div class="clearfix visible-xs"><br></div>
 											<div class="col-sm-4 col-md-6">
-												<a href="#" onclick="deleteField({{$field->id-1}}, 'experience')"class="btn btn-default">Delete</a>
+												<br><a href="#" onclick="deleteField({{$field->id-1}}, 'experience')"class="btn btn-default">Delete</a>
 											</div>
-											<div class="clearfix visible-xs"><br></div>
+										</div>
+									</div>
                                 </div>
 
                             @endforeach
@@ -154,8 +155,7 @@
                             </div>
                         </div>
                         {!! Form::close() !!}
-
-                        <a href="{{ url('/modify/' . $id . '/skills') }}">Skills</a>
+						
                     </div>
                 </div>
             </div>

@@ -2,15 +2,15 @@
 
 namespace App;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 
-class Profil extends Authenticatable
+class Profil extends Model
 {
     public $timestamps = false;
 
-    public function Skill()
+    public function Experiences()
     {
-        return $this->hasMany('App\Skill', 'id_profil');
+        return $this->hasMany('App\Experience', 'id_profil');
     }
 
     public function Projet()

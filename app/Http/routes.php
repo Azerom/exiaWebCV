@@ -47,7 +47,8 @@ Route::group(['middleware' => 'web'], function () {
 	
 	Route::get('/profil/{id}','ProfilController@viewOne');
 
-	Route::get('/modify/{id}', 'ProfilController@modify');
+	Route::get('/modify/{id}', 'ProfilController@modify')->name("getModify");
+	Route::post('/modify/{id}', 'ProfilController@modify');
 
 	Route::get('/delete/{id}', 'ProfilController@delete');
 	

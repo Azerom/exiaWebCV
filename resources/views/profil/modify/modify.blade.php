@@ -83,22 +83,23 @@
                                 </div>
                             </div>
 
-                        <a href="#" onclick="addFields('field', 'Field ', ['field', 'vfield', 'afield'], ['text', 'text', 'checkbox'])">Ajouter un champ</a>
-
+                        <a href="#" onclick="addFields('field', 'Field ', ['field', 'vfield', 'afield'], ['text', 'text', 'checkbox'])" class="btn btn-default">Ajouter un champ</a>
+						<br>
                         <div id="fields-container">
+							<br>
                             <?php $fcount = $profil->Field->count(); ?>
-                            Nb : {{$fcount}}
+                            
                             <input type="hidden" value="{{$fcount}}" id="fieldsNb" name="fieldsNb1" >
                             @foreach($profil->Field as $field)
-
+							<div class="col-xs-6 col-sm-4">
                                 Skill {{$field->id}}
-                                <a href="#" onclick="deleteField({{$field->id-1}}, 'field')">Delete</a>
                                 <div id="field{{$field->id-1}}">
                                     <input type="text" name="field{{$field->id-1}}" value="{{$field->name}}">
                                     <input type="text" name="vfield{{$field->id-1}}" value="{{$field->value}}">
                                     <input name="afield{{$field->id-1}}" <?php if($field->access){ echo 'checked ="checked"';}?> type="checkbox">
                                 </div>
-
+								<a href="#" onclick="deleteField({{$field->id-1}}, 'field')"class="btn btn-default">Delete</a>
+                            </div>    
                             @endforeach
 
                         </div>

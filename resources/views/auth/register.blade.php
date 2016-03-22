@@ -68,8 +68,13 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
+<<<<<<< HEAD
                                 <button type="submit" class="btn btn-primary">
                                     <i class="fa fa-btn fa-user"></i>Register
+=======
+                                <button type="submit" class="btn btn-default">
+                                    <i class="fa fa-btn fa-user"></i>Inscription
+>>>>>>> refs/remotes/origin/viewOP
                                 </button>
                             </div>
                         </div>

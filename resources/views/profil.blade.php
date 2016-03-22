@@ -68,8 +68,12 @@
 						<div class="col-sm-4 col-md-6">
 							<div class="panel panel-default">	
 								<div class="panel-body"> 
-									<p>{{ $Projet->name }} <br> {{ $Projet->description }} <br>  <br> <a href="{{ $Projet->links }}">Lien</a> <br> <a href="{{ $Projet->source }}">Source</a></p>
-									<IMG SRC="{{ $Projet->illustration }}" ALT="illus">
+									<div class="col-sm-4">
+										<IMG SRC="{{ $Projet->illustration }}" ALT="illus">
+									</div>
+									<div class="col-sm-8">
+										<p>{{ $Projet->name }} <br> {{ $Projet->description }} <br>  <br> <a href="{{ $Projet->links }}">Lien</a> <br> <a href="{{ $Projet->source }}">Source</a></p>
+									</div>
 								</div>
 							</div>
 						</div>

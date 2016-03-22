@@ -68,10 +68,11 @@
 						<div class="col-sm-4 col-md-6">
 							<div class="panel panel-default">	
 								<div class="panel-body"> 
-									<div class="col-sm-4">
+									<div class="col-md-4">
 										<IMG SRC="{{ $Projet->illustration }}" ALT="illus">
 									</div>
-									<div class="col-sm-8">
+									<div class="clearfix visible-xs"><br></div>
+									<div class="col-md-8">
 										<p>{{ $Projet->name }} <br> {{ $Projet->description }} <br>  <br> <a href="{{ $Projet->links }}">Lien</a> <br> <a href="{{ $Projet->source }}">Source</a></p>
 									</div>
 								</div>

@@ -63,25 +63,19 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-<<<<<<< HEAD
+
                     <li><a href="{{ url('/home') }}">Home</a></li>
-=======
-                    <li><a href="{{ url('/profils') }}"><span class="glyphicon glyphicon-list" aria-hidden="true"></span>  Profils</a></li>
-                    <li><a href="{{ url('/home') }}"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>  Dashboard</a></li>
->>>>>>> refs/remotes/origin/viewOP
+
                 </ul>
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
-<<<<<<< HEAD
+
                         <li><a href="{{ url('/login') }}">Login</a></li>
                         <li><a href="{{ url('/register') }}">Register</a></li>
-=======
-                        <li><a href="{{ url('/login') }}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>  Connexion</a></li>
-                        <li><a href="{{ url('/register') }}"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>  Inscription</a></li>
->>>>>>> refs/remotes/origin/viewOP
+
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

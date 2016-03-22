@@ -12,7 +12,7 @@
 						<div class="panel panel-default">	
 								<div class="panel-body"> 
 									<div class="col-xs-6 col-sm-4">
-									<h3><a href="{{url('/profil/' . $profil->id)}}" class="btn btn-default"> {{ $profil->pseudo }}</a></h3>
+									<h3><a href="{{url('/profil/' . $profil->id)}}" > {{ $profil->pseudo }}</a></h3>
 									</div>
 									<div class="col-xs-6 col-sm-4">
 									<p>{{  $profil->home_msg  }}</p>

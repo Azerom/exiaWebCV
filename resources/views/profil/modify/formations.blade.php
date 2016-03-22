@@ -8,42 +8,63 @@
             // Number of inputs to create
             // Container <div> where dynamic content will be placed
             var container = document.getElementById(keyword + "s-container");
-            if(container.childElementCount != 1){
+            if(container.childElementCount > 2){
                 var lastField = document.getElementById(keyword + "s-container").lastElementChild.getAttribute("id").substring(keyword.length);
 
                 var number = parseInt(lastField) + 1;
             }
             else
             {
-
                 var number = 0;
             }
+
             var div = document.createElement("div");
             div.name = keyword + number;
             div.id = keyword + number;
             container.appendChild(div);
 
+            var div2 = document.createElement("div");
+            div2.classList.add("panel");
+            div2.classList.add("panel-default");
+            div.appendChild(div2);
+
+            var div3 = document.createElement("div");
+            div3.classList.add("panel-body");
+            div2.appendChild(div3);
+
             // Append a node with a random text
+            var div = document.createElement("div");
+            div.classList.add("col-sm-3");
+            div.classList.add("col-md-6");
             div.appendChild(document.createTextNode(text + (number+1)));
-			
-
-            var delLink = document.createElement("a");
-            delLink.setAttribute("onclick", "deleteField(" + number + ", '" + keyword + "')");
-
-            delLink.href = "#";
-            delLink.innerHTML = "Delete";
-            div.appendChild(delLink);
-
-
-
+            div3.appendChild(div);
 
             for(var i = 0; i < fields.length; i++){
+
+                var div = document.createElement("div");
+                div.classList.add("col-sm-3");
+                div.classList.add("col-md-6");
 
                 var input = document.createElement("input");
                 input.type = types[i];
                 input.name = fields[i] + number;
                 div.appendChild(input);
+                div3.appendChild(div);
             }
+
+            var delLink = document.createElement("a");
+            delLink.setAttribute("onclick", "deleteField(" + number + ", '" + keyword + "')");
+            delLink.href = "#";
+            delLink.innerHTML = "Delete";
+            delLink.classList.add("btn");
+            delLink.classList.add("btn-default");
+
+            var div = document.createElement("div");
+            div.classList.add("col-sm-3");
+            div.classList.add("col-md-6");
+
+            div.appendChild(delLink);
+            div3.appendChild(div);
 
             fieldsNb = document.getElementById(keyword + "sNb").getAttribute("value");
 
@@ -83,8 +104,7 @@
 
                         <div id="forms-container">
                             <?php $fcount = $profil->Formation->count(); ?>
-                            <!--Nb : {{$fcount}}
-                            <input type="text" value="{{$fcount}}" id="formsNb" name="formsNb3" >-->
+                            <input type="text" value="{{$fcount}}" id="formsNb" name="formsNb3" >
                             @foreach($profil->Formation as $field)
 
                                 <div id="form{{$field->id-1}}">

@@ -3,61 +3,74 @@
         <!-- Main Content -->
 @section('content')
     <script type='text/javascript'>
-        function addFields(keyword, text, fields, types){
+                function addFields(keyword, text, fields, types){
 
-            // Number of inputs to create
-            // Container <div> where dynamic content will be placed
-            var container = document.getElementById(keyword + "s-container");
-            if(container.childElementCount != 1){
-                var lastField = document.getElementById(keyword + "s-container").lastElementChild.getAttribute("id").substring(keyword.length);
+                    // Number of inputs to create
+                    // Container <div> where dynamic content will be placed
+                    var container = document.getElementById(keyword + "s-container");
+                    if(container.childElementCount > 2){
+                        var lastField = document.getElementById(keyword + "s-container").lastElementChild.getAttribute("id").substring(keyword.length);
 
-                var number = parseInt(lastField) + 1;
-            }
-            else
-            {
+                        var number = parseInt(lastField) + 1;
+                    }
+                    else
+                    {
+                        var number = 0;
+                    }
 
-                var number = 0;
-            }
-            var div = document.createElement("div");
-            div.name = keyword + number;
-            div.id = keyword + number;
-            container.appendChild(div);
+                    var div = document.createElement("div");
+                    div.name = keyword + number;
+                    div.id = keyword + number;
+                    container.appendChild(div);
 
-            // Append a node with a random text
-            div.appendChild(document.createTextNode(text + (number+1)));
+                    var div2 = document.createElement("div");
+                    div2.classList.add("panel");
+                    div2.classList.add("panel-default");
+                    div.appendChild(div2);
 
-            var delLink = document.createElement("a");
-            delLink.setAttribute("onclick", "deleteField(" + number + ", '" + keyword + "')");
+                    var div3 = document.createElement("div");
+                    div3.classList.add("panel-body");
+                    div2.appendChild(div3);
 
-            delLink.href = "#";
-            delLink.innerHTML = "Delete";
-            div.appendChild(delLink);
+                    // Append a node with a random text
+                    var div = document.createElement("div");
+                    div.classList.add("col-sm-3");
+                    div.classList.add("col-md-6");
+                    div.appendChild(document.createTextNode(text + (number+1)));
+                    div3.appendChild(div);
 
+                    for(var i = 0; i < fields.length; i++){
 
+                        var div = document.createElement("div");
+                        div.classList.add("col-sm-3");
+                        div.classList.add("col-md-6");
 
+                        var input = document.createElement("input");
+                        input.type = types[i];
+                        input.name = fields[i] + number;
+                        div.appendChild(input);
+                        div3.appendChild(div);
+                    }
 
-            for(var i = 0; i < fields.length; i++){
+                    var delLink = document.createElement("a");
+                    delLink.setAttribute("onclick", "deleteField(" + number + ", '" + keyword + "')");
+                    delLink.href = "#";
+                    delLink.innerHTML = "Delete";
+                    delLink.classList.add("btn");
+                    delLink.classList.add("btn-default");
 
-                var input = document.createElement("input");
-                input.type = types[i];
-                input.name = fields[i] + number;
-                div.appendChild(input);
-            }
+                    var div = document.createElement("div");
+                    div.classList.add("col-sm-3");
+                    div.classList.add("col-md-6");
 
-            fieldsNb = document.getElementById(keyword + "sNb").getAttribute("value");
+                    div.appendChild(delLink);
+                    div3.appendChild(div);
 
-            document.getElementById(keyword + "sNb").value = parseInt(fieldsNb) + parseInt(1);
+                    fieldsNb = document.getElementById(keyword + "sNb").getAttribute("value");
 
-        }
+                    document.getElementById(keyword + "sNb").value = parseInt(fieldsNb) + parseInt(1);
 
-        function deleteField(nb, keyword){
-
-            var element = document.getElementById(keyword + nb);
-            element.parentNode.removeChild(element);
-
-            nbsfields = document.getElementById(keyword + "sNb").getAttribute("value");
-            document.getElementById(keyword + "sNb").value = parseInt(nbsfields) - parseInt(1);
-        }
+                }
     </script>
     <div class="container">
         <div class="row">
@@ -80,8 +93,8 @@
 
                         <div id="projects-container">
                             <?php $fcount = $profil->Projet->count(); ?>
-                            <!--Nb : {{$fcount}}
-                            <input type="text" value="{{$fcount}}" id="projectsNb" name="projectsNb3" >-->
+
+                            <input type="text" value="{{$fcount}}" id="projectsNb" name="projectsNb3" >
                             @foreach($profil->Projet as $field)
                                 <div id="project{{$field->id-1}}">
 									<div class="panel panel-default">

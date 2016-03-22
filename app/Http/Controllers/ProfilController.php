@@ -115,7 +115,6 @@ class ProfilController extends Controller
             return redirect()->route('getModify');
         }
 
-
         return view('profil.modify.modify', ['profil' => $profil, 'id' => $id]);
 
     }
@@ -281,8 +280,6 @@ class ProfilController extends Controller
         $profil = Profil::find($id);
         if (isset($_POST['projectsNb3'])) {
 
-
-
             $i = 0;
             $count = $_POST['projectsNb3'];
             $nProjects = [[], [], [], [], []];
@@ -347,7 +344,7 @@ class ProfilController extends Controller
         if(! Auth::check()){
             return view('errors.401');
         }
-        
+
         $user = Auth::user();
         $id = $user->id_profil;
         $profil = Profil::find($id);

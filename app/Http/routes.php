@@ -56,6 +56,9 @@ Route::group(['middleware' => 'web'], function () {
 	Route::get('/modify/{id}/form', 'ProfilController@modifyFormations')->name("getModifyFormations");
 	Route::post('/modify/{id}/form', 'ProfilController@modifyFormations');
 
+	Route::get('/modify/{id}/project', 'ProfilController@modifyProject')->name("getModifyProject");
+	Route::post('/modify/{id}/project', 'ProfilController@modifyProject');
+
 	Route::get('/delete/{id}', 'ProfilController@delete');
 	
     Route::get('/home', 'HomeController@index');

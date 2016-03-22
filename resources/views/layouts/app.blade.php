@@ -12,7 +12,23 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
 
     <!-- Styles -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://bootswatch.com/cosmo/bootstrap.min.css" rel="stylesheet">
+
+    <!--
+    -- https://bootswatch.com/darkly/bootstrap.min.css
+    -- https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css
+    -- https://bootswatch.com/united/bootstrap.min.css
+    -- https://bootswatch.com/spacelab/bootstrap.min.css
+    -- https://bootswatch.com/superhero/bootstrap.min.css
+    -- https://bootswatch.com/slate/bootstrap.min.css
+    -- https://bootswatch.com/simplex/bootstrap.min.css
+    -- https://bootswatch.com/sandstone/bootstrap.min.css
+    -- https://bootswatch.com/flatly/bootstrap.min.css
+    -- https://bootswatch.com/lumen/bootstrap.min.css
+    -- https://bootswatch.com/cyborg/bootstrap.min.css
+    -- https://bootswatch.com/darkly/bootstrap.min.css
+    -- https://bootswatch.com/cosmo/bootstrap.min.css
+    -->
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
     <style>
@@ -47,16 +63,16 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/home') }}">Accueil</a></li>
-                    <li><a href="{{ url('/profils') }}">Profils</a></li>
+                    <li><a href="{{ url('/profils') }}"><span class="glyphicon glyphicon-list" aria-hidden="true"></span>  Profils</a></li>
+                    <li><a href="{{ url('/home') }}"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>  Dashboard</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
-                        <li><a href="{{ url('/login') }}">Connection</a></li>
-                        <li><a href="{{ url('/register') }}">Inscription</a></li>
+                        <li><a href="{{ url('/login') }}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>  Connexion</a></li>
+                        <li><a href="{{ url('/register') }}"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>  Inscription</a></li>
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

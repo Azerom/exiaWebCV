@@ -106,23 +106,23 @@
                             <?php $fcount = $profil->Field->count(); ?>
                             
                             <input type="text" value="{{$fcount}}" id="fieldsNb" name="fieldsNb1" >
-                            @foreach($profil->Field as $field)
+
+                            <p>@foreach($profil->Field as $field)
                                 <div id="field{{$field->id-1}}">
-                                    <div class="panel panel-default">
-                                        <div class="panel-body">
+								    <div class="panel panel-default">
+									    <div class="panel-body">
 
-                                                Field {{$field->id}}
-                                                <input type="text" name="field{{$field->id-1}}" value="{{$field->name}}">
-                                                <div class="clearfix visible-xs"><br></div>
-                                                <input type="text" name="vfield{{$field->id-1}}" value="{{$field->value}}">
-                                                <input name="afield{{$field->id-1}}" <?php if($field->access){ echo 'checked ="checked"';}?> type="checkbox">
-                                                <div class="clearfix visible-xs"><br></div>
-                                                <a href="#" onclick="deleteField({{$field->id-1}}, 'field')"class="btn btn-default">Delete</a>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
+											Field {{$field->id}}
+											<input type="text" name="field{{$field->id-1}}" value="{{$field->name}}">
+											<div class="clearfix visible-xs"><br></div>
+											<input type="text" name="vfield{{$field->id-1}}" value="{{$field->value}}">
+											<input name="afield{{$field->id-1}}" <?php if($field->access){ echo 'checked ="checked"';}?> type="checkbox">
+											<div class="clearfix visible-xs"><br></div>
+											<a href="#" onclick="deleteField({{$field->id-1}}, 'field')"class="btn btn-default">Delete</a>
+										</div>
+									</div>
+								</div>
+                            </p>@endforeach
 
                         </div>
 

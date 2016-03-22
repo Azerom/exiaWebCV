@@ -92,7 +92,9 @@
                                 </div>
                             </div>
 
-                        <a href="#" onclick="addFields('field', 'Field ', ['field', 'vfield', 'afield'], ['text', 'text', 'checkbox'])">Ajouter un champ</a>
+                        <a href="#" onclick="addFields('field', 'Field ',
+                        ['field', 'vfield', 'afield'],
+                        ['text', 'text', 'checkbox'])">Ajouter un champ</a>
 
                         <div id="fields-container">
                             <?php $fcount = $profil->Field->count(); ?>

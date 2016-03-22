@@ -170,7 +170,7 @@ class ProfilController extends Controller
             $count = $_POST['formsNb3'];
             $nForms = [[],[],[],[],[]];
 
-            $lSkills = [];
+
             while($count != 0){
 
                 if(isset($_POST['fyear' . $i])){

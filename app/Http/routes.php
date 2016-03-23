@@ -70,6 +70,9 @@ Route::group(['middleware' => 'web'], function () {
 
 		Route::get('/modify/experience', 'ProfilController@modifyExperience')->name("getModifyExperience");
 		Route::post('/modify/experience', 'ProfilController@modifyExperience');
+
+		Route::get('/modify/expSkills/{id}', 'ProfilController@modifyExpSkills')->name("getModifyExpSkills");
+		Route::post('/modify/expSkills/{id}', 'ProfilController@modifyExpSkills');
 	});
 });
 

@@ -14,7 +14,7 @@
             // Number of inputs to create
             // Container <div> where dynamic content will be placed
             var container = document.getElementById(keyword + "s-container");
-            if(container.childElementCount > 2){
+            if(container.childElementCount > 1){
                 var lastField = document.getElementById(keyword + "s-container").lastElementChild.getAttribute("id").substring(keyword.length);
 
                 var number = parseInt(lastField) + 1;
@@ -117,7 +117,7 @@
                         <div id="experiences-container">
                             <?php $fcount = $profil->Experiences->count(); ?>
 
-                            <input type="text" value="{{$fcount}}" id="experienceNb" name="experienceNb3" >
+                            <input type="text" value="{{$fcount}}" id="experiencesNb" name="experienceNb3" >
 
                             @foreach($profil->Experiences as $field)
 
@@ -151,6 +151,8 @@
 											<div class="col-sm-4 col-md-6">
 												<br><a href="#" onclick="deleteField({{$field->id-1}}, 'experience')"class="btn btn-default">Delete</a>
 											</div>
+
+                                            <a href="{{ url('/modify/expSkills/' . $field->id) }}">Related skills</a>
 										</div>
 									</div>
                                 </div>

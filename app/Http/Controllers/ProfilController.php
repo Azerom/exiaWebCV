@@ -351,7 +351,6 @@ class ProfilController extends Controller
         if (isset($_POST['experienceNb3'])) {
 
 
-
             $i = 0;
             $count = $_POST['experienceNb3'];
             $nExperience = [[], [], [], [], []];
@@ -402,7 +401,7 @@ class ProfilController extends Controller
             }
 
             $profil->push();
-            return redirect()->route('getModifyExperience', ['id' => $id]);
+            return redirect()->route('getModifyExperience');
 
         }
         else {
@@ -411,6 +410,70 @@ class ProfilController extends Controller
         }
 
 
+
+    }
+
+    public function modifyExpSkills($id){
+        if(! Auth::check()){
+            return view('errors.401');
+        }
+
+        $user = Auth::user();
+        $idp = $user->id_profil;
+        $profil = Profil::find($idp);
+
+        $exp = Experience::find($id);
+
+        if($exp->id_profil != $idp){
+            return view('errors.401');
+        }
+
+        if (isset($_POST['fieldsNb1'])) {
+            $i = 0;
+            $count = $_POST['fieldsNb1'];
+            $nSkills = [];
+
+
+            while ($count != 0) {
+
+                if (isset($_POST['field' . $i])) {
+
+                    array_push($nSkills, $_POST['field' . $i]);
+
+                    $count--;
+                }
+
+                $i++;
+            }
+
+            $i = 0;
+            foreach ($exp->Skills as $skill) {
+                if (in_array($skill->id, $nSkills)) {
+
+                        unset($nSkills[$i]);
+
+                } else {
+
+                    $skill->pivot->id_experiences = null;
+                }
+
+                $i++;
+            }
+
+            foreach ($nSkills as $skill) {
+                $i = array_search($skill, $nSkills);
+                $form = new Experience();
+
+                $exp->Skills()->attach($skill);
+                unset($nSkills[$i]);
+            }
+
+            return redirect()->route('getModifyExpSkills', ['id' => $id]);
+        }
+        else {
+
+            return view('profil.modify.expSkill', ['profil' => $profil, 'id' => $id]);
+        }
 
     }
 

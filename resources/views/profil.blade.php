@@ -15,6 +15,9 @@
 			 <div class="panel-body"> 
 				<p>Profil n°:{{ $profil->id }}</p>
 				<p>nom: {{$profil->pseudo}}</p>
+				 @foreach($profil->Field as $field)
+					 <p>{{$field->name}} : {{$field->value}}</p>
+				 @endforeach
 			</div>
 		</div>	
 	</div>
@@ -23,9 +26,9 @@
 		<div class="panel panel-default">	
 			<div class="panel-heading">Skills</div>
 			<div class="panel-body"> 
-				<p>@foreach($profil->skills as $skill)
+				@foreach($profil->skills as $skill)
                                 <p>{{ $skill->name }} : {{ $skill->level }}</p>
-                            @endforeach</p>
+				@endforeach
 			</div>
 		</div>	
 	</div>

@@ -351,7 +351,6 @@ class ProfilController extends Controller
         if (isset($_POST['experienceNb3'])) {
 
 
-
             $i = 0;
             $count = $_POST['experienceNb3'];
             $nExperience = [[], [], [], [], []];
@@ -402,7 +401,7 @@ class ProfilController extends Controller
             }
 
             $profil->push();
-            return redirect()->route('getModifyExperience', ['id' => $id]);
+            return redirect()->route('getModifyExperience');
 
         }
         else {
@@ -412,6 +411,21 @@ class ProfilController extends Controller
 
 
 
+    }
+
+    public function modifyExpSkills($id){
+        if(! Auth::check()){
+            return view('errors.401');
+        }
+
+        $user = Auth::user();
+        $idp = $user->id_profil;
+        $profil = Profil::find($idp);
+
+        $exp = Experience::find($id);
+        foreach($exp->Skills as $esp){
+            echo $esp->name;
+        }
     }
 
 

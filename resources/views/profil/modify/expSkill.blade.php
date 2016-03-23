@@ -45,11 +45,17 @@
                 div.classList.add("col-sm-3");
                 div.classList.add("col-md-6");
 
-                var input = document.createElement("input");
-                input.type = types[i];
+                var model = document.getElementById("model");
+
+                var input = model.cloneNode(true)
                 input.name = fields[i] + number;
+                input.id = fields[i] + number;
+                input.hidden = false;
                 div.appendChild(input);
                 div3.appendChild(div);
+
+
+
             }
 
             var delLink = document.createElement("a");
@@ -93,29 +99,42 @@
                         <a href="{{ url('/modify/project') }}"class="btn btn-default">Projects</a>
                     </div>
                     <div class="panel-body">
-                        {!! Form::model($profil, array('url' => '/modify')) !!}
+                        {!! Form::model($profil, array('url' => '/modify/expSkills/' . $id)) !!}
 
                         {!! csrf_field() !!}
 
-                        <a href="#" onclick="addFields('field', 'Field ', ['field', 'vfield', 'afield'], ['text', 'text', 'checkbox'])" class="btn btn-default">Ajouter un champ</a>
+                        <a href="#" onclick="addFields('field', 'Skill ', ['field'], ['select'])" class="btn btn-default">Ajouter un champ</a>
                         <br>
+
+                        <select hidden id="model">
+                            @foreach($profil->skills as $skill)
+                                <option value="{{$skill->id}}" >{{$skill->name}}</option>
+                            @endforeach
+                        </select>
 
                         <div id="fields-container">
                             <br>
-                            <?php $fcount = $profil->Field->count(); ?>
+                            <?php $fcount = $profil->Field->count();
+                                $exp = \App\Experience::find($id);
+                            ?>
 
                             <input type="text" value="{{$fcount}}" id="fieldsNb" name="fieldsNb1" >
 
-                            @foreach($profil->Field as $field)
-                                <div id="field{{$field->id-1}}">
+                            @foreach($exp->Skills as $field)
+                                <div id="field{{$field->id}}">
                                     <div class="panel panel-default">
                                         <div class="panel-body">
                                             <div class="col-sm-3 col-md-6">
-                                                Field {{$field->id}}
+                                                Skill {{$field->id}}
                                             </div>
 
                                             <div class="col-sm-3 col-md-6">
-                                                <input type="text" name="field{{$field->id-1}}" value="{{$field->name}}">
+                                                <select name="field{{$field->id}}">
+                                                    @foreach($profil->skills as $skill)
+                                                    <option @if($skill->id == $field->id) selected @endif value="{{$skill->id}}" >{{$skill->name}}</option>
+
+                                                    @endforeach
+                                                </select>
                                             </div>
 
                                             <div class="col-sm-3 col-md-6">

@@ -38,8 +38,13 @@ class ProfilController extends Controller
         return $this->viewOne($id);
     }
 
+    /*
+     * Controller used to modify basic profil's informations,
+     * including home page message and the different fields
+     */
     public function modify()
     {
+        //Checking if the user is well log
         if(! Auth::check()){
             return view('errors.401');
         }
@@ -47,18 +52,23 @@ class ProfilController extends Controller
         $id = $user->id_profil;
         $profil = Profil::find($id);
 
+        //If a post is involved
         if (isset($_POST['pseudo'])) {
 
+            //update the pseudo and the home message
             $profil->pseudo = $_POST['pseudo'];
             $profil->home_msg = $_POST['home_msg'];
 
             $i = 0;
             $count = $_POST['fieldsNb1'];
-            $nFields = [];
-            $vFields = [];
-            $aFields = [];
+            $nFields = [];//fields names
+            $vFields = [];//fields values
+            $aFields = [];//fields access
+
+            //Recover all the fields in $_POST
             while ($count != 0) {
 
+                //As the id identified the different post elements use the real id in database, we need to check every possible value for id to recover all the fields
                 if (isset($_POST['field' . $i])) {
 
                     array_push($nFields, $_POST['field' . $i]);
@@ -75,7 +85,9 @@ class ProfilController extends Controller
             }
 
             $i = 0;
+            //Check for correspondences in database
             foreach ($profil->Field as $field) {
+                //If the field exist in the database, we check for update then drop the field form array
                 if (in_array($field->name, $nFields)) {
                     if ($field->value != $vFields[$i]) {
                         $field->value = $vFields[$i];
@@ -83,6 +95,7 @@ class ProfilController extends Controller
                     if ($field->access != $aFields[$i]) {
                         $field->access = $aFields[$i];
                     }
+
                     unset($nFields[$i]);
                     unset($vFields[$i]);
                     unset($aFields[$i]);
@@ -94,6 +107,7 @@ class ProfilController extends Controller
                 $i++;
             }
 
+            //All the remaining element of the array have to be add to the database
             foreach ($nFields as $nSkill) {
                 $field = new Field();
                 $field->name = $nSkill;
@@ -114,11 +128,15 @@ class ProfilController extends Controller
             $profil->push();
             return redirect()->route('getModify');
         }
-
+        //If this isnt a post, we simply return the view
         return view('profil.modify.modify', ['profil' => $profil, 'id' => $id]);
 
     }
 
+    /*
+     * Controller used to modify the skills of the user
+     * Function similar to modify()
+     */
     public function modifySkills()
     {
         if(! Auth::check()){
@@ -180,6 +198,10 @@ class ProfilController extends Controller
         }
     }
 
+    /*
+     * Controller used to modify the formation of the user
+     * Function similar to modify()
+     */
     public function modifyFormations()
     {
         if(! Auth::check()){
@@ -269,6 +291,10 @@ class ProfilController extends Controller
 
     }
 
+    /*
+     * Controller used to modify the project of the user
+     * Function similar to modify()
+     */
     public function modifyProject()
     {
         if(! Auth::check()){
@@ -339,6 +365,10 @@ class ProfilController extends Controller
         }
     }
 
+    /*
+     * Controller used to modify the experiences of the user
+     * Function similar to modify()
+     */
     public function modifyExperience()
     {
         if(! Auth::check()){
@@ -412,7 +442,10 @@ class ProfilController extends Controller
 
 
     }
-
+    /*
+     * Controller used to modify the skills links to experiences
+     * Function similar to modify()
+     */
     public function modifyExpSkills($id){
         if(! Auth::check()){
             return view('errors.401');

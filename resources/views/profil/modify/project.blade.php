@@ -89,7 +89,7 @@
                             </button>
                             <ul class="dropdown-menu">
                                 <li><a href="{{ url('/modify') }}">Pseudo</a></li>
-                                <li><a href="{{ url('/modify/skills') }}">Skills</a></li>
+                                <li><a href="{{ url('/modify/skills') }}">Compétences</a></li>
                                 <li><a href="{{ url('/modify/form') }}">Formations</a></li>
                                 <li><a href="{{ url('/modify/experience') }}">Experience</a></li>
                                 <li><a href="{{ url('/modify/project') }}">Projects</a></li>

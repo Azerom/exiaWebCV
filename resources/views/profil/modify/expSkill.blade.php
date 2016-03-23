@@ -91,18 +91,20 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="btn-group">
-                        <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Modifier mon profil <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a href="{{ url('/modify') }}">Pseudo</a></li>
-                            <li><a href="{{ url('/modify/skills') }}">Skills</a></li>
-                            <li><a href="{{ url('/modify/form') }}">Formations</a></li>
-                            <li><a href="{{ url('/modify/experience') }}">Experience</a></li>
-                            <li><a href="{{ url('/modify/project') }}">Projects</a></li>
-                        </ul>
-                    </div>
+                    <div class="panel-heading">
+                        <div class="btn-group">
+                            <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Modifier mon profil <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ url('/modify') }}">Pseudo</a></li>
+                                <li><a href="{{ url('/modify/skills') }}">Skills</a></li>
+                                <li><a href="{{ url('/modify/form') }}">Formations</a></li>
+                                <li><a href="{{ url('/modify/experience') }}">Experience</a></li>
+                                <li><a href="{{ url('/modify/project') }}">Projects</a></li>
+                            </ul>
+                        </div>
+                     </div>
                     <div class="panel-body">
                         {!! Form::model($profil, array('url' => '/modify/expSkills/' . $id)) !!}
 

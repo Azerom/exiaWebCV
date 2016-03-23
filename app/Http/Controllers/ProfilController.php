@@ -21,8 +21,8 @@ class ProfilController extends Controller
         $profils = Profil::all();
         return view('profil.index', ['profils' => $profils]);
     }
-
-    public function viewOne($id)
+    
+	public function viewOne($id)
     {
 
         //get the profil

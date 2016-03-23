@@ -32,7 +32,6 @@ class Profil extends Model
     {
         return $this->hasMany('App\Skill', 'id_profil');
     }
-
     protected $fillable = [
         'pseudo', 'mdp',
     ];
@@ -40,7 +39,7 @@ class Profil extends Model
     protected $hidden = [
         'mdp', 'remember_token',
     ];
-
+	
     protected $table = 'profils';
 
 }

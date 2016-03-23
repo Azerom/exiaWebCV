@@ -151,8 +151,9 @@
 											<div class="col-sm-4 col-md-6">
 												<br><a href="#" onclick="deleteField({{$field->id-1}}, 'experience')"class="btn btn-default">Delete</a>
 											</div>
-
-                                            <a href="{{ url('/modify/expSkills/' . $field->id) }}">Related skills</a>
+											<div class="col-sm-4 col-md-6">
+												<br><a href="{{ url('/modify/expSkills/' . $field->id) }}"class="btn btn-default">Related skills</a>
+											</div>
 										</div>
 									</div>
                                 </div>

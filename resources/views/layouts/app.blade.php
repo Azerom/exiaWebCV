@@ -32,7 +32,6 @@
     -- https://bootswatch.com/flatly/bootstrap.min.css
     -- https://bootswatch.com/lumen/bootstrap.min.css
     -- https://bootswatch.com/cyborg/bootstrap.min.css
-    -- https://bootswatch.com/darkly/bootstrap.min.css
     -- https://bootswatch.com/cosmo/bootstrap.min.css
     -->
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
